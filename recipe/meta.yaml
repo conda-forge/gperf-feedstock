@@ -1,5 +1,5 @@
-{% set version = "3.1" %}
-{% set sha256 = "588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2" %}
+{% set version = "3.3" %}
+{% set sha256 = "fd87e0aba7e43ae054837afd6cd4db03a3f2693deb3619085e6ed9d8d9604ad8" %}
 
 package:
   name: gperf
@@ -11,11 +11,12 @@ source:
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - make
     - sed  # [osx]
