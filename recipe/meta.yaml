@@ -10,20 +10,28 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  skip: True  # [win]
+  number: 1
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}          # [unix]
+    - {{ compiler('cxx') }}        # [unix]
+    - {{ stdlib('c') }}            # [unix]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ stdlib('m2w64_c') }}      # [win]
     - make
-    - sed  # [osx]
+    - m2-base  # [win]
+    - m2-bash  # [win]
+    - m2-sed   # [win]
+    - sed      # [osx]
 
 test:
   commands:
-    - gperf --help
-    - gperf --version
+    - gperf --help         # [unix]
+    - gperf --version      # [unix]
+    - gperf.exe --help     # [win]
+    - gperf.exe --version  # [win]
 
 about:
   home: https://www.gnu.org/software/gperf/
@@ -37,3 +45,4 @@ extra:
   recipe-maintainers:
     - mbargull
     - tfors
+    - isuruf
