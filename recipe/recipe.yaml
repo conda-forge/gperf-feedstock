@@ -1,0 +1,67 @@
+schema_version: 1
+
+context:
+  version: "3.3"
+  sha256: fd87e0aba7e43ae054837afd6cd4db03a3f2693deb3619085e6ed9d8d9604ad8
+
+package:
+  name: gperf
+  version: ${{ version }}
+
+source:
+  url: https://ftp.gnu.org/pub/gnu/gperf/gperf-${{ version }}.tar.gz
+  sha256: ${{ sha256 }}
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - if: unix
+      then: gnuconfig
+    - if: unix
+      then: ${{ compiler('c') }}
+    - if: unix
+      then: ${{ compiler('cxx') }}
+    - if: unix
+      then: ${{ stdlib('c') }}
+    - if: win
+      then: ${{ compiler('m2w64_c') }}
+    - if: win
+      then: ${{ compiler('m2w64_cxx') }}
+    - if: win
+      then: ${{ stdlib('m2w64_c') }}
+    - make
+    - if: win
+      then: m2-base
+    - if: win
+      then: m2-bash
+    - if: win
+      then: m2-sed
+    - if: osx
+      then: sed
+
+tests:
+  - script:
+      - if: unix
+        then: gperf --help
+      - if: unix
+        then: gperf --version
+      - if: win
+        then: gperf.exe --help
+      - if: win
+        then: gperf.exe --version
+
+about:
+  license: GPL-3.0-or-later
+  license_file: COPYING
+  summary: GNU gperf is a perfect hash function generator.
+  homepage: https://www.gnu.org/software/gperf/
+  repository: http://savannah.gnu.org/projects/gperf/
+  documentation: https://www.gnu.org/software/gperf/manual/gperf.html
+
+extra:
+  recipe-maintainers:
+    - mbargull
+    - tfors
+    - isuruf
