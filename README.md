@@ -218,6 +218,7 @@ Feedstock Maintainers
 =====================
 
 * [@isuruf](https://github.com/isuruf/)
+* [@luhenry](https://github.com/luhenry/)
 * [@mbargull](https://github.com/mbargull/)
 * [@tfors](https://github.com/tfors/)
 
