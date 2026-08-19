@@ -3,7 +3,7 @@
 
 package:
   name: gperf
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: http://ftp.gnu.org/pub/gnu/gperf/gperf-{{ version }}.tar.gz
