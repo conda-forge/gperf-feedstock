@@ -3,17 +3,18 @@
 
 package:
   name: gperf
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   url: http://ftp.gnu.org/pub/gnu/gperf/gperf-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}          # [unix]
     - {{ compiler('cxx') }}        # [unix]
     - {{ stdlib('c') }}            # [unix]
@@ -46,3 +47,4 @@ extra:
     - mbargull
     - tfors
     - isuruf
+    - luhenry
