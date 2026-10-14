@@ -1,3 +1,2 @@
-set PREFIX=%LIBRARY_PREFIX:\=/%
-bash %RECIPE_DIR%/build.sh
-if errorlevel 1 exit 1
+call "%BUILD_PREFIX%\Library\bin\run_autotools_clang_conda_build.bat"
+if errorlevel 1 exit /b 1
